@@ -14,5 +14,4 @@ ADMIN_TELEGRAM_USERNAME = os.environ.get("ADMIN_TELEGRAM_USERNAME", "alidacru")
 # Flask session uchun maxfiy kalit
 SECRET_KEY = os.environ.get("SECRET_KEY", "ernfowrufh4785fg48fc")
 
-# Ilova haqida matn
 APP_NAME = "AvtoUsta"
