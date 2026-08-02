@@ -337,7 +337,8 @@ def main():
     app.add_handler(CallbackQueryHandler(callback_router))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
     print("Bot ishga tushdi...")
-    app.run_polling()
+    # stop_signals=None: bot alohida oqimda (thread) ishlatilganda ham xato bermasligi uchun
+    app.run_polling(stop_signals=None)
 
 
 if __name__ == "__main__":

@@ -1,3 +1,6 @@
+import os
+import threading
+import asyncio
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from database import get_conn, init_db, increment_visits
 from telegram_utils import send_message, order_keyboard
@@ -8,6 +11,23 @@ app = Flask(__name__)
 app.secret_key = config.SECRET_KEY
 
 init_db()
+
+
+def _start_bot_in_background():
+    """Telegram botni alohida oqimda (thread) ishga tushiradi, shunda Render'da
+    faqat bitta (bepul) Web Service bilan ham veb-ilova va bot birga ishlaydi."""
+    def runner():
+        asyncio.set_event_loop(asyncio.new_event_loop())
+        from bot import main as bot_main
+        bot_main()
+
+    t = threading.Thread(target=runner, daemon=True)
+    t.start()
+
+
+# RUN_BOT=0 qilib qo'ysangiz, bot ishga tushmaydi (masalan botni alohida joyda ishlatmoqchi bo'lsangiz)
+if os.environ.get("RUN_BOT", "1") == "1" and config.BOT_TOKEN and "TOKEN_NI" not in config.BOT_TOKEN:
+    _start_bot_in_background()
 
 
 @app.context_processor
@@ -197,4 +217,5 @@ def master_logout():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=os.environ.get("DEBUG") == "1")
