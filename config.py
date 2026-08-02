@@ -1,7 +1,7 @@
 import os
 
 # Telegram bot tokeningizni @BotFather orqali oling va shu yerga qo'ying
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "TOKEN_NI_BU_YERGA_QOYING")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "8916769188:AAFkNdPm2xcZGjdwyUoHzDaA7j6m6ngXiAg")
 
 # Sizning (administratorning) Telegram chat ID raqamingiz.
 # Uni bilish uchun @userinfobot ga /start yozing.
