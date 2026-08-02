@@ -50,10 +50,10 @@ body {
     border: 1px solid #333844;
     border-radius: 10px;
     color: var(--text);
-    font-size: 20px;
-    letter-spacing: 2px;
-    padding: 8px 14px;
+    padding: 10px 12px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 .burger:active { transform: scale(0.96); }
 
@@ -75,39 +75,37 @@ body {
     margin: 0;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+.list {
+    display: flex;
+    flex-direction: column;
     gap: 12px;
 }
 
-.card {
+.list-item {
     background: var(--panel);
     border: 1px solid #313744;
     border-radius: var(--radius);
-    padding: 16px 14px;
+    padding: 22px 20px;
     text-decoration: none;
     color: var(--text);
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    min-height: 108px;
-    transition: border-color .15s, transform .1s;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: border-color .15s, transform .1s, background .15s;
 }
-.card:hover { border-color: var(--amber); }
-.card:active { transform: scale(0.98); }
-.card .icon {
-    width: 34px; height: 34px;
-    border-radius: 9px;
-    background: rgba(255,140,26,0.14);
-    color: var(--amber);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 17px; font-weight: 700;
-}
-.card .name {
-    font-size: 14px;
+.list-item:hover { border-color: var(--amber); background: #2a2f3a; }
+.list-item:active { transform: scale(0.99); }
+.list-item .label {
+    font-size: 17px;
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.35;
+}
+.list-item .arrow {
+    flex-shrink: 0;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
 }
 
 .overlay {

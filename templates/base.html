@@ -9,18 +9,26 @@
 <body>
     <div class="topbar">
         <a href="{{ url_for('index') }}" class="brand" style="text-decoration:none;">
-            🔧 {{ app_name }}<span class="dot">.</span>
+            {{ app_name }}<span class="dot">.</span>
         </a>
-        <button class="burger" onclick="toggleDrawer()">☰</button>
+        <button class="burger" onclick="toggleDrawer()" aria-label="Menyu">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M3 6H17M3 10H17M3 14H17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+        </button>
     </div>
 
     <div class="overlay" id="overlay" onclick="toggleDrawer()"></div>
     <div class="drawer" id="drawer">
-        <button class="drawer-close" onclick="toggleDrawer()">✕</button>
+        <button class="drawer-close" onclick="toggleDrawer()" aria-label="Yopish">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M2 2L14 14M14 2L2 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+        </button>
         <h3>Menyu</h3>
-        <a href="https://t.me/{{ admin_username }}" target="_blank">👑 Administrator</a>
-        <a href="{{ url_for('master_login') }}">👨‍🔧 Shaxsiy akkaunt</a>
-        <a href="{{ url_for('about') }}">ℹ️ Ilova haqida</a>
+        <a href="https://t.me/{{ admin_username }}" target="_blank">Administrator</a>
+        <a href="{{ url_for('master_login') }}">Shaxsiy akkaunt</a>
+        <a href="{{ url_for('about') }}">Ilova haqida</a>
     </div>
 
     <div class="container">

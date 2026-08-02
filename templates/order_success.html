@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="success-box">
-    <div class="check">✓</div>
+    <div class="check">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+            <path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
     <h2>Arizangiz qabul qilindi!</h2>
     <p style="color:var(--text-dim);">Tez orada tegishli usta siz bilan bog'lanadi.</p>
     <a href="{{ url_for('index') }}" class="btn btn-outline" style="max-width:240px; margin:24px auto 0; display:block;">Bosh sahifaga qaytish</a>
