@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="display:flex; justify-content:space-between; align-items:center;">
+    <h2 style="margin-bottom:0;">Salom, {{ master['full_name'] }} 👋</h2>
+    <a href="{{ url_for('master_logout') }}" class="back-link">Chiqish →</a>
+</div>
+<p style="color:var(--text-dim); margin-top:4px;">Yo'nalish: {{ master['category_name'] }}</p>
+
+<div class="section-title">🆕 Yangi klientlar</div>
+{% if new_orders %}
+    {% for o in new_orders %}
+    <div class="order-item">
+        <div class="row"><span class="label">Ism familiya</span><b>{{ o['first_name'] }} {{ o['last_name'] }}</b></div>
+        <div class="row"><span class="label">Telefon</span><b>{{ o['phone'] }}</b></div>
+        {% if o['extra_info'] %}
+        <div class="row"><span class="label">Izoh</span><span>{{ o['extra_info'] }}</span></div>
+        {% endif %}
+        <div class="order-actions">
+            <form method="POST" action="{{ url_for('master_accept', order_id=o['id']) }}">
+                <button class="btn" type="submit">✅ Qabul qilish</button>
+            </form>
+            <form method="POST" action="{{ url_for('master_decline', order_id=o['id']) }}">
+                <button class="btn btn-secondary" type="submit">❌ Bekor qilish</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <p style="color:var(--text-dim);">Hozircha yangi klientlar yo'q.</p>
+{% endif %}
+
+<div class="section-title">📋 Mening buyurtmalarim</div>
+{% if my_orders %}
+    {% for o in my_orders %}
+    <div class="order-item">
+        <div class="row"><span class="label">Ism familiya</span><b>{{ o['first_name'] }} {{ o['last_name'] }}</b></div>
+        <div class="row"><span class="label">Telefon</span><b>{{ o['phone'] }}</b></div>
+        <span class="badge badge-accepted">Qabul qilingan</span>
+    </div>
+    {% endfor %}
+{% else %}
+    <p style="color:var(--text-dim);">Hali qabul qilingan buyurtma yo'q.</p>
+{% endif %}
+{% endblock %}

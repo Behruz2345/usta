@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="hero">
+    <h1>Qaysi usta kerak?</h1>
+    <p>Yo'nalishni tanlang va arizangizni qoldiring — tegishli usta siz bilan bog'lanadi.</p>
+</div>
+
+<div class="grid">
+    {% for c in categories %}
+    <a class="card" href="{{ url_for('order_form', category_id=c['id']) }}">
+        <div class="icon">{{ c['name'][0] }}</div>
+        <div class="name">{{ c['name'] }}</div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

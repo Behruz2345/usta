@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<a class="back-link" href="{{ url_for('index') }}">← Orqaga</a>
+<div class="form-card">
+    <h2>{{ category['name'] }}</h2>
+    <p style="color:var(--text-dim); margin-top:-8px;">Arizangiz uchun ma'lumotlaringizni kiriting</p>
+    <form method="POST">
+        <label>Ism *</label>
+        <input type="text" name="first_name" required>
+
+        <label>Familiya *</label>
+        <input type="text" name="last_name" required>
+
+        <label>Telefon raqam *</label>
+        <input type="tel" name="phone" placeholder="+998 90 123 45 67" required>
+
+        <label>Qo'shimcha ma'lumot</label>
+        <textarea name="extra_info" placeholder="Muammoni qisqacha yozing..."></textarea>
+
+        <button type="submit" class="btn">Ariza yuborish</button>
+    </form>
+</div>
+{% endblock %}

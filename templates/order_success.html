@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="success-box">
+    <div class="check">✓</div>
+    <h2>Arizangiz qabul qilindi!</h2>
+    <p style="color:var(--text-dim);">Tez orada tegishli usta siz bilan bog'lanadi.</p>
+    <a href="{{ url_for('index') }}" class="btn btn-outline" style="max-width:240px; margin:24px auto 0; display:block;">Bosh sahifaga qaytish</a>
+</div>
+{% endblock %}

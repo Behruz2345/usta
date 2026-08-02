@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="topbar">
+        <a href="{{ url_for('index') }}" class="brand" style="text-decoration:none;">
+            🔧 {{ app_name }}<span class="dot">.</span>
+        </a>
+        <button class="burger" onclick="toggleDrawer()">☰</button>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="toggleDrawer()"></div>
+    <div class="drawer" id="drawer">
+        <button class="drawer-close" onclick="toggleDrawer()">✕</button>
+        <h3>Menyu</h3>
+        <a href="https://t.me/{{ admin_username }}" target="_blank">👑 Administrator</a>
+        <a href="{{ url_for('master_login') }}">👨‍🔧 Shaxsiy akkaunt</a>
+        <a href="{{ url_for('about') }}">ℹ️ Ilova haqida</a>
+    </div>
+
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for m in messages %}
+                    <div class="flash">{{ m }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+
+    <script>
+        function toggleDrawer() {
+            document.getElementById('drawer').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

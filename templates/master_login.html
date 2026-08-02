@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="login-box">
+    <div class="form-card">
+        <h2>Shaxsiy akkaunt</h2>
+        <p style="color:var(--text-dim); margin-top:-8px;">Login va parolingiz bilan kiring</p>
+        <form method="POST">
+            <label>Login</label>
+            <input type="text" name="login" required autofocus>
+
+            <label>Parol</label>
+            <input type="password" name="password" required>
+
+            <button type="submit" class="btn">Kirish</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
